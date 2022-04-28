@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+         #navbar{
+             display:flex;
+             background-color: rgb(4, 109, 116);
+             color:white;
+             margin-bottom:50px;
+         }
+         #navbar>div{
+             margin:auto;
+             padding:15px;
+             font-size: 30px;
+         }
+         a{
+             color:white;
+            text-decoration: none;
+         }
+     </style>
+ </head>
+ <body>
+     <div id="navbar">
+         <div><a href="backend.html" >Backend</a></div>
+         <div><a href="frontend.html" >frontend</a></div>
+     </div>
+    <form id="form">
+        <input id="image" type="text" placeholder="image url"/>
+        <input id="name" type="text" placeholder="name"/>
+        <input id="company" type="text" placeholder="company"/>
+        <input id="logo" type="text" placeholder="company logo"/>
+        <input type="submit"/>
+    </form>
+ </body>
+ </html>
+ <script>
+     document.querySelector("#form").addEventListener("submit",myfunction);
+     var invesarr=JSON.parse(localStorage.getItem("investerdata"))||[];
+     function myfunction(){
+         event.preventDefault();
+         var obj={
+               image:form.image.value,
+               name:form.name.value,
+               company:form.company.value,
+               logo:form.logo.value,
+          }
+          invesarr.push(obj)
+          localStorage.setItem("investerdata",JSON.stringify(invesarr))
+     }
+ </script>

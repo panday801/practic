@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:30px;
+        }
+        p+img{
+            height: 40px;
+           display:flex;
+           margin-left:-10px;
+           margin-bottom:15px;
+        }
+        #container>div{
+        margin:auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 15px;
+        }
+        h3+p{
+            color:grey;
+        }
+        .image{
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        #navbar{
+             display:flex;
+             background-color: rgb(4, 109, 116);
+             color:white;
+             margin-bottom:50px;
+         }
+         #navbar>div{
+             margin:auto;
+             padding:15px;
+             font-size: 30px;
+         }
+         a{
+             color:white;
+            text-decoration: none;
+         }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="backend.html" >Backend</a></div>
+        <div><a href="frontend.html" >frontend</a></div>
+    </div>
+    <h1>Masai Investers</h1>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    var arr=JSON.parse(localStorage.getItem("investerdata"))
+    console.log(arr)
+    arr.forEach(function(ele){
+      var box=document.createElement("div");
+      var avtar=document.createElement("img");
+      avtar.setAttribute("src",ele.image)
+      avtar.setAttribute("class","image");
+      var name=document.createElement("h3");
+      name.innerText=ele.name;
+      var passi=document.createElement("p");
+      passi.innerText=ele.company;
+      var company=document.createElement("img");
+      company.setAttribute("src",ele.logo);
+      box.append(avtar,name,passi,company);
+document.querySelector("#container").append(box)
+  })
+        
+    
+   
+</script>
