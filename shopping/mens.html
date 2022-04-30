@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        #container{
+            /* width:80%; */
+            margin:auto;
+            /* border:1px solid; */
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:20px;
+        }
+        #pricebox{
+            display:flex;
+        }
+        #pricebox>p{
+            margin-right:20px;
+        }
+        #pricebox>p+p{
+            text-decoration-line: line-through;
+            color:grey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mens page</h1>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+        var contain=JSON.parse(localStorage.getItem("Mens"));
+        contain.forEach(function(elem) {
+            console.log(elem);
+            var box=document.createElement("div");
+            var image=document.createElement("img");
+            image.setAttribute("src",elem.image_url);
+            var productname=document.createElement("h3");
+            productname.innerText=elem.name;
+            var pricebox=document.createElement("div");
+            pricebox.setAttribute("id","pricebox");
+        
+            var price=document.createElement("p")
+            price.innerText=elem.price;
+            var offer=document.createElement("p")
+            offer.innerText=elem.strikedoffprice;
+            pricebox.append(price,offer);
+            var butt=document.createElement("button");
+            butt.innerText="Add to cart";
+            butt.style.color="blue";
+            butt.style.borderColor="blue";
+            butt.style.border="1px solid";
+            box.append(image,productname,pricebox,butt);
+            document.querySelector("#container").append(box)
+        })
+</script>
